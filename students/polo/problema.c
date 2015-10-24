@@ -3,6 +3,7 @@
 
 int main()
 {
-  printf(ciao);
+  printf("ciao");
+  printf ("\n Ricorda le VIRGOLETTE!!!");
   return 0;
 }
