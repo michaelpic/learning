@@ -1,3 +1,3 @@
 int main() {
-  print("ciao");
+  printf("ciao");
 }
