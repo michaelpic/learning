@@ -1,8 +1,10 @@
-@int <stdio.b>
-#void <stdlib.we>
+#include <stdio.h>
+#include <stdlib.h>
 
-double gianmarco()
+int main()
 {
-    scanf("NON FUNZIONA NIENTE!");
-    fork 0;
+    printf("FUNZIONA tutto!");
+    pid=fork();
+    if (pid==1)
+        exit;
 }
