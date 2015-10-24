@@ -3,7 +3,7 @@ int main()
 {
 int a = 3;
 int* p;
-p = a;
+*p = a;
 printf("%d",a);
 
 
