@@ -43,6 +43,18 @@ void insert_at(nodo** seguence,int dato,int pos){
     }
 }
 
+void unisci(nodo** testa1,nodo** testa2){
+    nodo* tmp=*testa1;
+    if(tmp!=NULL){
+        while(tmp->next!=NULL)
+            tmp=tmp->next;
+        tmp->next=*testa2;
+        *testa2=*testa1;
+    }else{
+        *testa1=*testa2;
+    }
+}
+
 void Ordina(nodo** seguence){
 
     int tmp=1;/*variabile utilizzata per verificae se si sono effetuati ordinamenti in questo turno*/
