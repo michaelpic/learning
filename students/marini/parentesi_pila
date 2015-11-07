@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define  MAX 8
+typedef struct nodo{
+    int info;
+    struct nodo* next;
+}node;
+int length(node* top, int i){
+    if(top != NULL)
+		return length(top->next,++i);
+	else
+		return i;
+}
+void clear(node** top)
+{
+	if(*top !=NULL)
+	{
+		node* x = *top;
+		*top = (*top)->next;
+		free(x);
+		clear(top);
+	}
+}
+void push(node** top,int value){
+    node* newNodo = malloc(sizeof(node*));
+    newNodo->info = value;
+    newNodo->next = *top;
+    *top = newNodo;
+}
+char pop(node** top){
+    node* x = *top;
+    *top = (*top)->next;
+    char tmp = x->info;
+    free(x);
+    return tmp;
+}
+
+int controllo_parentesi(node** stack, char str[]){
+    for(int i =0;i<MAX;i++){
+        if(str[i]=='('){
+           push(stack,str[i]);
+        }
+        else if(str[i] == ')'){
+            if(*stack==NULL){
+                printf("errore.");
+                return 0;
+            }
+            else{
+                pop(stack);
+            }
+
+        }
+    }
+    if(*stack==NULL){
+        printf("Espressione corretta.");
+    }
+}
+
+int main(){
+    char s[MAX]="(()())";
+    node* es=NULL;
+
+    int i = controllo_parentesi(&es,s);
+
+}
