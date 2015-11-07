@@ -55,9 +55,12 @@ int controlla_parentesi(char V[]){
     while(i<MAX_LENG_STRING && V[i]!='\0'){
         if(V[i]=='(')
             push(&testa,'(');
-        if(V[i]==')')
-            if(pop(&testa)==NULL)
+        if(V[i]==')'){
+            node* tmp=pop(&testa);
+            if(tmp==NULL)
                 return 1;
+            free(tmp);
+        }
         i++;
     }
     return piena(&testa);
