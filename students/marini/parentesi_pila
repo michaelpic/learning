@@ -35,31 +35,34 @@ char pop(node** top){
     return tmp;
 }
 
-int controllo_parentesi(node** stack, char str[]){
+void controllo_parentesi(node** stack, char str[]){
     for(int i =0;i<MAX;i++){
-        if(str[i]=='('){
-           push(stack,str[i]);
+        if(str[i]=='('){ //se incontro una parentesi aperta
+           push(stack,str[i]); //la pusho
         }
-        else if(str[i] == ')'){
-            if(*stack==NULL){
-                printf("errore.");
-                return 0;
+        else if(str[i] == ')'){ //se incontro una chiusa
+            if(*stack==NULL){ //controllo se c'e' una parentesi aperta
+                printf("Espressione errata."); //se non c'e' l'espressione e' errata
+                return;
             }
-            else{
+            else{ //altrimenti la estraggo
                 pop(stack);
             }
 
         }
     }
-    if(*stack==NULL){
+    if(*stack==NULL){ //quando finisco l'espressione controllo se ci sono parestesi aperte in piu'
         printf("Espressione corretta.");
     }
+    else
+        printf("Espressione errata.");
 }
 
 int main(){
-    char s[MAX]="(()())";
+    char s[MAX];
     node* es=NULL;
-
-    int i = controllo_parentesi(&es,s);
+    printf("Inserisci Stringa : ");
+    scanf("%s", s);
+    controllo_parentesi(&es,s);
 
 }
